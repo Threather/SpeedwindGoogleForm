@@ -1,0 +1,49 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0d1117; /* GitHub's dark background */
+    color: #c9d1d9; /* Light text color for the body */
+}
+
+.container {
+    text-align: center;
+    background-color: #161b22; /* Slightly lighter dark background for the container */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for card effect */
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    color: #e2e4e6; /* Light gray text for headings */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+select {
+    background-color: #0d1117; /* Dark background for the dropdown */
+    color: #c9d1d9; /* Light text color */
+    border: 1px solid #30363d; /* Darker border color */
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus {
+    border-color: #58a6ff; /* Blue color for focus effect */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2); /* Blue shadow for focus */
+}
+
+option {
+    background-color: #0d1117; /* Consistent dark background for options */
+    color: #c9d1d9; /* Light text color for options */
+}
