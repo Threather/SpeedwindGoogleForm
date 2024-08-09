@@ -25,6 +25,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    color: #e2e4e6; /* Light gray text for headings */
+    font-size: 20px;
+    margin-top: 30px;
+}
+
 select {
     background-color: #0d1117; /* Dark background for the dropdown */
     color: #c9d1d9; /* Light text color */
@@ -35,6 +41,7 @@ select {
     cursor: pointer;
     width: 100%;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px; /* Add spacing between dropdowns */
 }
 
 select:focus {
@@ -43,7 +50,23 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2); /* Blue shadow for focus */
 }
 
-option {
-    background-color: #0d1117; /* Consistent dark background for options */
-    color: #c9d1d9; /* Light text color for options */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px; /* Add spacing above the list */
+}
+
+li {
+    margin: 10px 0;
+}
+
+a {
+    color: #58a6ff; /* Link color */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #79c0ff; /* Hover color for links */
 }

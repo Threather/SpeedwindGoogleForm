@@ -28,4 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Show/hide links based on dropdown selection
+    document.getElementById('reviewDropdown').addEventListener('change', (event) => {
+        const value = event.target.value;
+        const rmLinks = document.getElementById('rmLinks');
+        const asLinks = document.getElementById('asLinks');
+        
+        if (value === 'RM') {
+            rmLinks.style.display = 'block';
+            asLinks.style.display = 'none';
+        } else if (value === 'AS') {
+            asLinks.style.display = 'block';
+            rmLinks.style.display = 'none';
+        } else {
+            rmLinks.style.display = 'none';
+            asLinks.style.display = 'none';
+        }
+    });
 });
