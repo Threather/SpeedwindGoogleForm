@@ -18,18 +18,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function updateLinkBox(linkKey) {
+        const url = links[linkKey];
+        const linkBox = document.getElementById('linkBox');
+        const dynamicLink = document.getElementById('dynamicLink');
+        
+        if (url) {
+            dynamicLink.href = url;
+            dynamicLink.textContent = `Click here to open the link for ${linkKey.replace(/([A-Z])/g, ' $1').toUpperCase()}`;
+            linkBox.style.display = 'block';
+        } else {
+            linkBox.style.display = 'none';
+        }
+    }
+
+    // Handle linkDropdown change
     document.getElementById('linkDropdown').addEventListener('change', (event) => {
         const value = event.target.value;
-        if (value) {
-            if (value !== 'default') {
-                redirectTo(value);
-            } else {
-                console.warn('No valid option selected');
-            }
+        if (value && value !== 'default') {
+            redirectTo(value); // Open in new tab
+            updateLinkBox(value); // Update link box
+        } else {
+            document.getElementById('linkBox').style.display = 'none';
         }
     });
 
-    // Show/hide links based on dropdown selection
+    // Show/hide links based on reviewDropdown selection
     document.getElementById('reviewDropdown').addEventListener('change', (event) => {
         const value = event.target.value;
         const rmLinks = document.getElementById('rmLinks');
