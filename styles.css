@@ -15,7 +15,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for card effect */
-    max-width: 400px;
+    max-width: 600px; /* Increased width for better table fit */
     width: 100%;
 }
 
@@ -23,12 +23,6 @@ h1 {
     color: #e2e4e6; /* Light gray text for headings */
     font-size: 24px;
     margin-bottom: 20px;
-}
-
-h2 {
-    color: #e2e4e6; /* Light gray text for headings */
-    font-size: 20px;
-    margin-top: 30px;
 }
 
 select {
@@ -41,7 +35,6 @@ select {
     cursor: pointer;
     width: 100%;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 10px; /* Add spacing between dropdowns */
 }
 
 select:focus {
@@ -50,23 +43,40 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2); /* Blue shadow for focus */
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 15px; /* Add spacing above the list */
+option {
+    background-color: #0d1117; /* Consistent dark background for options */
+    color: #c9d1d9; /* Light text color for options */
 }
 
-li {
-    margin: 10px 0;
+.links-table {
+    margin-top: 20px;
+    text-align: left;
 }
 
-a {
-    color: #58a6ff; /* Link color */
+.links-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.links-table th, .links-table td {
+    border: 1px solid #30363d;
+    padding: 10px;
+}
+
+.links-table th {
+    background-color: #30363d;
+    color: #c9d1d9;
+}
+
+.links-table tr:nth-child(even) {
+    background-color: #0d1117;
+}
+
+.links-table a {
+    color: #58a6ff;
     text-decoration: none;
-    font-size: 16px;
-    transition: color 0.2s ease;
 }
 
-a:hover {
-    color: #79c0ff; /* Hover color for links */
+.links-table a:hover {
+    text-decoration: underline;
 }
