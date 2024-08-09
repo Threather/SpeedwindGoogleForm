@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`Redirecting to: ${linkKey}`);
         const url = links[linkKey];
         if (url) {
-            window.open(url, '_blank');
+            window.open(url, '_blank');  // Attempt to open in a new tab
         } else {
             console.error('Link not found for key:', linkKey);
             alert('Link not found');
@@ -20,16 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('linkDropdown').addEventListener('change', (event) => {
         const value = event.target.value;
-        if (value) {
-            if (value !== 'default') {
-                redirectTo(value);
-            } else {
-                console.warn('No valid option selected');
-            }
+        if (value && value !== 'default') {
+            redirectTo(value);
+        } else {
+            console.warn('No valid option selected');
         }
     });
 
-    // Show/hide links based on dropdown selection
     document.getElementById('reviewDropdown').addEventListener('change', (event) => {
         const value = event.target.value;
         const rmLinks = document.getElementById('rmLinks');
