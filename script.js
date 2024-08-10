@@ -7,8 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelOrder: 'https://docs.google.com/forms/d/e/1FAIpQLScTYjf3rkQmTrbwPiJ8no6lDFd3d0ntMY7E2Ji7Qd07ASUGKA/viewform'
     };
 
+    const operationLinks = {
+        optManager: {
+            name: 'Socheata',
+            link: 'https://docs.google.com/spreadsheets/d/1QCrm9mwkqa_URETFSjHxxCf34S__kpTY-KfbwOltbdI/edit?usp=sharing'
+        },
+        optSupervisor: {
+            name: 'Sreymom',
+            link: 'https://docs.google.com/spreadsheets/d/1s5QU4NXITz3anNJequzEqa_FY8ep8dv15feknLv5Wnk/edit?usp=sharing'
+        }
+    };
+
     function redirectTo(linkKey) {
-        console.log(`Redirecting to: ${linkKey}`);
         const url = links[linkKey];
         if (url) {
             window.open(url, '_blank');
@@ -32,18 +42,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle linkDropdown change
+    function showPasswordModal(role) {
+        const modal = document.getElementById('passwordModal');
+        const passwordInput = document.getElementById('passwordInput');
+        const submitPassword = document.getElementById('submitPassword');
+        const closeModal = document.querySelector('#passwordModal .close');
+        const passwordError = document.getElementById('passwordError');
+
+        if (!modal || !passwordInput || !submitPassword || !closeModal || !passwordError) {
+            console.error('Required modal elements are missing.');
+            return;
+        }
+
+        // Clear error message and password input on modal show
+        passwordError.style.display = 'none';
+        passwordInput.value = '';
+
+        submitPassword.onclick = () => {
+            const enteredPassword = passwordInput.value;
+            const correctPassword = role === 'optManager' ? '1' : '2';
+            if (enteredPassword === correctPassword) {
+                window.open(operationLinks[role].link, '_blank');
+                modal.style.display = 'none';
+            } else {
+                passwordError.style.display = 'block';
+                passwordInput.value = ''; // Clear the password input
+                console.log('Incorrect password');
+            }
+        };
+
+        closeModal.onclick = () => {
+            modal.style.display = 'none';
+        };
+
+        window.onclick = (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        modal.style.display = 'block'; // Show the modal
+    }
+
     document.getElementById('linkDropdown').addEventListener('change', (event) => {
         const value = event.target.value;
         if (value && value !== 'default') {
-            redirectTo(value); // Open in new tab
-            updateLinkBox(value); // Update link box
+            redirectTo(value);
+            updateLinkBox(value);
         } else {
             document.getElementById('linkBox').style.display = 'none';
         }
     });
 
-    // Show/hide links based on reviewDropdown selection
     document.getElementById('reviewDropdown').addEventListener('change', (event) => {
         const value = event.target.value;
         const rmLinks = document.getElementById('rmLinks');
@@ -60,4 +110,28 @@ document.addEventListener('DOMContentLoaded', () => {
             asLinks.style.display = 'none';
         }
     });
+
+    document.getElementById('operationDropdown').addEventListener('change', (event) => {
+        const value = event.target.value;
+        const operationLinksDiv = document.getElementById('operationLinks');
+        const operationTableBody = document.getElementById('operationTableBody');
+        
+        if (value && value !== '') {
+            operationTableBody.innerHTML = '';
+            if (operationLinks[value]) {
+                const { name, link } = operationLinks[value];
+                const row = `<tr>
+                                <td>${name}</td>
+                                <td><a href="#" onclick="showPasswordModal('${value}'); return false;">Open Link</a></td>
+                             </tr>`;
+                operationTableBody.innerHTML += row;
+                operationLinksDiv.style.display = 'block';
+            }
+        } else {
+            operationLinksDiv.style.display = 'none';
+        }
+    });
+
+    // Expose showPasswordModal to global scope
+    window.showPasswordModal = showPasswordModal;
 });

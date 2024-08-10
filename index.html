@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoogleFormLink</title>
+    <title>Operation Section</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .password-error {
+            color: red;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -16,7 +54,6 @@
             <option value="cancelOrder">Sale Rep Drop Order Cancel (Form)</option>
         </select>
 
-        <!-- Link Box added here -->
         <div id="linkBox" class="link-box" style="display: none;">
             <a id="dynamicLink" href="" target="_blank">Click here to open the link</a>
         </div>
@@ -111,7 +148,41 @@
                 </tbody>
             </table>
         </div>
+
+        <h2>Operation Review</h2>
+        <select id="operationDropdown">
+            <option value="">Select Operation</option>
+            <option value="optManager">Opt Manager</option>
+            <option value="optSupervisor">Opt Supervisor</option>
+        </select>
+
+        <!-- Operation Links Table -->
+        <div id="operationLinks" class="links-table" style="display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody id="operationTableBody">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>    
+        </div>
+
+        <!-- Password Modal -->
+        <div id="passwordModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Enter Password</h2>
+                <input type="password" id="passwordInput" placeholder="Enter your password">
+                <button id="submitPassword">Submit</button>
+                <p id="passwordError" class="password-error">Incorrect password. Please try again.</p>
+            </div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

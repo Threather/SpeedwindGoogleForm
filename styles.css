@@ -55,11 +55,12 @@ option {
 
 .links-table table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Ensures borders are merged between cells */
+    margin: 0 auto;
 }
 
 .links-table th, .links-table td {
-    border: 1px solid #30363d;
+    border: 1px solid #30363d; /* Dark border color for table cells */
     padding: 10px;
 }
 
@@ -98,4 +99,100 @@ option {
 
 .link-box a:hover {
     text-decoration: underline;
+}
+
+/* CSS for Operation Section Table */
+#operationTable {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders are merged between cells */
+    margin-top: 20px;
+}
+
+#operationTable th, #operationTable td {
+    border: 1px solid #30363d; /* Dark border color for table cells */
+    padding: 10px;
+}
+
+#operationTable th {
+    background-color: #30363d; /* Dark background for headers */
+    color: #c9d1d9; /* Light text color */
+}
+
+#operationTable tr:nth-child(even) {
+    background-color: #0d1117; /* Dark background for even rows */
+}
+
+#operationTable a {
+    color: #58a6ff; /* Link color */
+    text-decoration: none;
+}
+
+#operationTable a:hover {
+    text-decoration: underline;
+}
+
+/* CSS for Password Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #161b22; /* Dark background for the modal */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+}
+
+.close {
+    color: #c9d1d9;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #58a6ff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal h2 {
+    color: #000000;
+}
+
+#passwordInput {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+#submitPassword {
+    background-color: #58a6ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#submitPassword:hover {
+    background-color: #1f78d1;
 }
