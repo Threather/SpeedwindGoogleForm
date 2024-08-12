@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         submitPassword.onclick = () => {
             const enteredPassword = passwordInput.value;
-            const correctPassword = role === 'optManager' ? '1' : '2';
+            const correctPassword = role === 'optManager' ? 'Optm@123' : 'Opts@123';
             if (enteredPassword === correctPassword) {
                 window.open(operationLinks[role].link, '_blank');
                 modal.style.display = 'none';
